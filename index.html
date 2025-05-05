@@ -114,7 +114,28 @@
         update();
         gameStarted = true;
       }
-    });
+    });// Sound files
+const flapSound = new Audio("flap.mp3");
+const hitSound = new Audio("hit.mp3");
+
+// Tap and key press sound
+document.addEventListener("keydown", () => {
+  bird.velocity = bird.lift;
+  flapSound.play();
+});
+document.addEventListener("touchstart", () => {
+  bird.velocity = bird.lift;
+  flapSound.play();
+});
+
+btn.addEventListener("click", () => {
+  btn.style.display = "none";
+  if (!gameStarted) {
+    setInterval(spawnPipes, 1500);
+    update();
+    gameStarted = true;
+  }
+});
   </script>
 </body>
 </html>
